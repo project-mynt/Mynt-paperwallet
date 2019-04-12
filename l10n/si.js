@@ -1,5 +1,5 @@
 ﻿"si": {
-    "defaultTitle" : "Ravencoin-paperwallet - Univerzalni generator papirnatih/ denarnic/trezorjev za Ravencoin in ostale kriptovalute",
+    "defaultTitle" : "Mynt-paperwallet - Univerzalni generator papirnatih/ denarnic/trezorjev za Mynt in ostale kriptovalute",
     "title" : "Generator paprirnatih denarnic",
     "bulkgeneratingaddresses": "Generiram naslove... ",
     "brainalertpassphrasetooshort": "Vaša obnovitvena fraza/geslo je prekratka.\n\n",

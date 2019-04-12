@@ -3513,7 +3513,7 @@ function QRCodeScanner(width, height, container, success, error) {
 			qrcode.callback = function(data) {
 				if (data && data.indexOf('error') != 0) {
 					stop();
-					if (data.indexOf('ravencoin:') == 0)
+					if (data.indexOf('mynt:') == 0)
 						data = data.substring(8);
 					_success(data);
 				}

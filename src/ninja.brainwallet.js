@@ -23,13 +23,13 @@ ninja.wallets.brainwallet = {
 			// enforce a minimum passphrase length
 			if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
 				var bytes = Crypto.SHA256(key, { asBytes: true });
-				var rvnKey = new Ravencoin.ECKey(bytes);
-				var ravencoinAddress = rvnKey.getRavencoinAddress();
-				var privWif = rvnKey.getRavencoinWalletImportFormat();
-				document.getElementById("brainrvnaddress").innerHTML = ravencoinAddress;
-				document.getElementById("brainrvnprivwif").innerHTML = privWif;
+				var myntKey = new Mynt.ECKey(bytes);
+				var myntAddress = myntKey.getMyntAddress();
+				var privWif = myntKey.getMyntWalletImportFormat();
+				document.getElementById("brainmyntaddress").innerHTML = myntAddress;
+				document.getElementById("brainmyntprivwif").innerHTML = privWif;
 				ninja.qrCode.showQrCode({
-					"brainqrcodepublic": ravencoinAddress,
+					"brainqrcodepublic": myntAddress,
 					"brainqrcodeprivate": privWif
 				});
 				document.getElementById("brainkeyarea").style.visibility = "visible";

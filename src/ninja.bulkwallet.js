@@ -13,10 +13,10 @@ ninja.wallets.bulkwallet = {
 	},
 
 	// use this function to bulk generate addresses
-	// rowLimit: number of Ravencoin Addresses to generate
+	// rowLimit: number of Mynt Addresses to generate
 	// startIndex: add this number to the row index for output purposes
 	// returns:
-	// index,ravencoinAddress,privateKeyWif
+	// index,myntAddress,privateKeyWif
 	buildCSV: function (rowLimit, startIndex, compressedAddrs) {
 		var bulkWallet = ninja.wallets.bulkwallet;
 		document.getElementById("bulktextarea").value = ninja.translator.get("bulkgeneratingaddresses") + rowLimit;
@@ -37,13 +37,13 @@ ninja.wallets.bulkwallet = {
 		var bulkWallet = ninja.wallets.bulkwallet;
 		if (bulkWallet.csvRowsRemaining > 0) {
 			bulkWallet.csvRowsRemaining--;
-			var key = new Ravencoin.ECKey(false);
+			var key = new Mynt.ECKey(false);
 			key.setCompressed(bulkWallet.compressedAddrs);
 
 			bulkWallet.csv.push((bulkWallet.csvRowLimit - bulkWallet.csvRowsRemaining + bulkWallet.csvStartIndex)
-								+ ",\"" + key.getRavencoinAddress() + "\",\"" + key.toString("wif")
+								+ ",\"" + key.getMyntAddress() + "\",\"" + key.toString("wif")
 			//+	"\",\"" + key.toString("wifcomp")    // uncomment these lines to add different private key formats to the CSV
-			//+ "\",\"" + key.getRavencoinHexFormat()
+			//+ "\",\"" + key.getMyntHexFormat()
 			//+ "\",\"" + key.toString("base64")
 								+ "\"");
 

@@ -1,5 +1,5 @@
 "tr": {
-    "defaultTitle" : "Ravencoin-paperwallet - Ravencoin ve diger kripto para birimleri için Evrensel Kagit cüzdan üreticisi",
+    "defaultTitle" : "Mynt-paperwallet - Mynt ve diger kripto para birimleri için Evrensel Kagit cüzdan üreticisi",
     "title" : "Kagit Cüzdan Üreticisi",
     "bulkgeneratingaddresses": "Cüzdan Yaratiliyor... ",
     "brainalertpassphrasetooshort": "Girmis oldugunuz parola çok kisa.\n\n",

@@ -73,5 +73,5 @@ janin.currency = {
 
 janin.currencies = [
     //                              name, networkVersion, privateKeyPrefix, WIF_Start, CWIF_Start, donate
-    janin.currency.createCurrency ("Ravencoin",           0x3c, 0x80, "5",    "[LK]" , "RDCSVocUmGWcLyo7SmiViQPYWnNLvYJa8w")
+    janin.currency.createCurrency ("Mynt",           0x32, 0x80, "50",    "[LK]" , "MDread1Whd1dMhAgnuJj6Ke7aYbtCh6TCs ")
                    ];

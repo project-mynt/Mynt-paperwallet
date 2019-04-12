@@ -1,5 +1,5 @@
 //https://raw.github.com/bitcoinjs/bitcoinjs-lib/e90780d3d3b8fc0d027d2bcb38b80479902f223e/src/ecdsa.js
-Ravencoin.ECDSA = (function () {
+Mynt.ECDSA = (function () {
 	var ecparams = EllipticCurve.getSECCurveByName("secp256k1");
 	var rng = new SecureRandom();
 
@@ -56,7 +56,7 @@ Ravencoin.ECDSA = (function () {
 
 		verify: function (hash, sig, pubkey) {
 			var r, s;
-			if (Ravencoin.Util.isArray(sig)) {
+			if (Mynt.Util.isArray(sig)) {
 				var obj = ECDSA.parseSig(sig);
 				r = obj.r;
 				s = obj.s;
@@ -70,7 +70,7 @@ Ravencoin.ECDSA = (function () {
 			var Q;
 			if (pubkey instanceof ec.PointFp) {
 				Q = pubkey;
-			} else if (Ravencoin.Util.isArray(pubkey)) {
+			} else if (Mynt.Util.isArray(pubkey)) {
 				Q = EllipticCurve.PointFp.decodeFrom(ecparams.getCurve(), pubkey);
 			} else {
 				throw "Invalid format for pubkey value, must be byte array or ec.PointFp";
@@ -250,7 +250,7 @@ Ravencoin.ECDSA = (function () {
 				throw "Pubkey recovery unsuccessful";
 			}
 
-			var pubKey = new Ravencoin.ECKey();
+			var pubKey = new Mynt.ECKey();
 			pubKey.pub = Q;
 			return pubKey;
 		},
@@ -260,7 +260,7 @@ Ravencoin.ECDSA = (function () {
 		*
 		* When extracting a pubkey from a signature, we have to
 		* distinguish four different cases. Rather than putting this
-		* burden on the verifier, Ravencoin includes a 2-bit value with the
+		* burden on the verifier, Mynt includes a 2-bit value with the
 		* signature.
 		*
 		* This function simply tries all four cases and returns the value
@@ -269,8 +269,8 @@ Ravencoin.ECDSA = (function () {
 		calcPubkeyRecoveryParam: function (address, r, s, hash) {
 			for (var i = 0; i < 4; i++) {
 				try {
-					var pubkey = Ravencoin.ECDSA.recoverPubKey(r, s, hash, i);
-					if (pubkey.getRavencoinAddress().toString() == address) {
+					var pubkey = Mynt.ECDSA.recoverPubKey(r, s, hash, i);
+					if (pubkey.getMyntAddress().toString() == address) {
 						return i;
 					}
 				} catch (e) { }

@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for Ravencoin. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
-  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, ravencoin" />
+  <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for Mynt. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
+  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, mynt" />
 
   <!--
 
@@ -51,7 +51,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   GitHub Repository: https://github.com/MichaelMure/WalletGenerator.net
   -->
 
-  <title>Ravencoin-paperwallet - Universal Paper wallet generator for Ravencoin and other cryptocurrencies</title>
+  <title>Mynt-paperwallet - Universal Paper wallet generator for Mynt and other cryptocurrencies</title>
 
   <script type="text/javascript">
 //array.map.js
@@ -90,22 +90,22 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //qrcode.js
   </script>
   <script type="text/javascript">
-//ravencoinjs-lib.js
+//myntjs-lib.js
   </script>
   <script type="text/javascript">
-//ravencoinjs-lib.base58.js
+//myntjs-lib.base58.js
   </script>
   <script type="text/javascript">
-//ravencoinjs-lib.address.js
+//myntjs-lib.address.js
   </script>
   <script type="text/javascript">
-//ravencoinjs-lib.ecdsa.js
+//myntjs-lib.ecdsa.js
   </script>
   <script type="text/javascript">
-//ravencoinjs-lib.eckey.js
+//myntjs-lib.eckey.js
   </script>
   <script type="text/javascript">
-//ravencoinjs-lib.util.js
+//myntjs-lib.util.js
   </script>
   <script type="text/javascript">
 //crypto-scrypt.js
@@ -137,10 +137,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     <div class="banner">
       <div id="coinLogo">
-        <img id="coinLogoImg" src="logos/ravencoin.png" alt="Universal Open Source Client-Side Wallet Generator" />
+        <img id="coinLogoImg" src="logos/mynt.png" alt="Universal Open Source Client-Side Wallet Generator" />
       </div>
       <h1>
-        <img id="siteTitle" src="images/banner.png" alt="Ravencoin Paper Wallet Generator" />
+        <img id="siteTitle" src="images/banner.png" alt="Mynt Paper Wallet Generator" />
       </h1>
     </div>
 
@@ -163,7 +163,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       <div id="singlearea" class="walletarea">
 
         <div id="initBanner">
-          <span id="generatelabelravencoinaddress" class="i18n">Generating new Address...</span><br />
+          <span id="generatelabelmyntaddress" class="i18n">Generating new Address...</span><br />
           <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
           <span id="generatelabelkeypress" class="i18n">OR type some random characters into this textbox</span> <input type="text" id="generatekeyinput" onkeypress="ninja.seeder.seedKeyPress(event);" /><br />
           <div id="seedpooldisplay"></div>
@@ -189,11 +189,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <div id="keyarea" class="keyarea">
           <div class="public">
             <div class="pubaddress">
-              <span class="label i18n" id="singlelabelravencoinaddress">Public Address</span>
+              <span class="label i18n" id="singlelabelmyntaddress">Public Address</span>
             </div>
             <div id="qrcode_public" class="qrcode_public"></div>
             <div class="pubaddress">
-              <span class="output" id="rvnaddress"></span>
+              <span class="output" id="myntaddress"></span>
             </div>
             <div id="singleshare" class="i18n">SHARE</div>
           </div>
@@ -203,7 +203,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             </div>
             <div id="qrcode_private" class="qrcode_private"></div>
             <div class="privwif">
-              <span class="output" id="rvnprivwif"></span>
+              <span class="output" id="myntprivwif"></span>
             </div>
             <div id="singlesecret" class="i18n">SECRET</div>
           </div>
@@ -214,7 +214,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
             <h3 id="securitystep0title" class="i18n">Step 0. Follow the security checklist recommendation</h3>
             <p id="securitystep0" class="i18n">
-              First step is to <strong>download</strong> this website from <a href="https://github.com/MSFTserver/Ravencoin-paperwallet/releases">Github</a> and open the index.html file directly from your computer. It's just too easy to sneak some evil code in the 6000+ lines of javascript to leak your private key, and you don't want to see your fund stolen. Code version control make it much easier to cross-check what actually run. For extra security, <strong>unplug your Internet access</strong> while generating your wallet.
+              First step is to <strong>download</strong> this website from <a href="https://github.com/MSFTserver/Mynt-paperwallet/releases">Github</a> and open the index.html file directly from your computer. It's just too easy to sneak some evil code in the 6000+ lines of javascript to leak your private key, and you don't want to see your fund stolen. Code version control make it much easier to cross-check what actually run. For extra security, <strong>unplug your Internet access</strong> while generating your wallet.
             </p>
             <h3 id="securitystep1title" class="i18n">Step 1. Generate new address</h3>
             <p id="securitystep1" class="i18n">
@@ -278,7 +278,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           <p class="faqAnswer" id="faqQuestion1.1">
 We think that having a unique generator for multiple currencies lead to a much better reviewed tool for all than having a myriad of half-backed generators.
 Changes made to this generator are available on Github in small and divided commits and those are easy to review and reuse.
-Ravencoin-paperwallet use the same security measures as the original project. All-in-one html document, no ajax, no analytics, no external calls, no CDN that can inject anything they want. And trust us, we have seen some nasty things when reviewing some wallet generator.
+Mynt-paperwallet use the same security measures as the original project. All-in-one html document, no ajax, no analytics, no external calls, no CDN that can inject anything they want. And trust us, we have seen some nasty things when reviewing some wallet generator.
           </p>
 
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion2');">&#8226; Why should I use a paper wallet ?</a></h3>
@@ -358,15 +358,15 @@ Ravencoin-paperwallet use the same security measures as the original project. Al
           <div class="public">
             <div id="brainqrcodepublic" class="qrcode_public"></div>
             <div class="pubaddress">
-              <span class="label i18n" id="brainlabelravencoinaddress">Public Address:</span>
-              <span class="output" id="brainrvnaddress"></span>
+              <span class="label i18n" id="brainlabelmyntaddress">Public Address:</span>
+              <span class="output" id="brainmyntaddress"></span>
             </div>
           </div>
           <div class="private">
             <div id="brainqrcodeprivate" class="qrcode_private"></div>
             <div class="privwif">
               <span class="label i18n" id="brainlabelprivatekey">Private Key (Wallet Import Format):</span>
-              <span class="output" id="brainrvnprivwif"></span>
+              <span class="output" id="brainmyntprivwif"></span>
             </div>
           </div>
         </div>
@@ -416,12 +416,12 @@ Ravencoin-paperwallet use the same security measures as the original project. Al
           </div>
           <div class="pubqr">
             <div class="item">
-              <span class="label i18n" id="detaillabelravencoinaddress">Public Address</span>
+              <span class="label i18n" id="detaillabelmyntaddress">Public Address</span>
               <div id="detailqrcodepublic" class="qrcode_public"></div>
               <span class="output" id="detailaddress"></span>
             </div>
             <div class="item right">
-              <span class="label i18n" id="detaillabelravencoinaddresscomp">Public Address Compressed</span>
+              <span class="label i18n" id="detaillabelmyntaddresscomp">Public Address Compressed</span>
               <div id="detailqrcodepubliccomp" class="qrcode_public"></div>
               <span class="output" id="detailaddresscomp"></span>
             </div>
@@ -484,7 +484,7 @@ Ravencoin-paperwallet use the same security measures as the original project. Al
 
     <div id="footer" class="footer">
       <div>
-        <span class="item"><a href="https://github.com/MSFTserver/Raven-paperwallet/releases" target="_blank" id="footerlabelgithub" class="i18n">Download (GitHub Repository)</a></span>
+        <span class="item"><a href="https://github.com/project-mynt/Mynt-paperwallet/releases" target="_blank" id="footerlabelgithub" class="i18n">Download (GitHub Repository)</a></span>
       </div>
       <div class="copyright">
         <span id="footerlabelcopyright1">Copyright MSFTserver.</span>

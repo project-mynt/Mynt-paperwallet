@@ -1,6 +1,6 @@
 //https://raw.github.com/bitcoinjs/bitcoinjs-lib/c952aaeb3ee472e3776655b8ea07299ebed702c7/src/base58.js
-(function (Ravencoin) {
-	Ravencoin.Base58 = {
+(function (Mynt) {
+	Mynt.Base58 = {
 		alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz",
 		validRegex: /^[1-9A-HJ-NP-Za-km-z]+$/,
 		base: BigInteger.valueOf(58),
@@ -66,7 +66,7 @@
 		}
 	};
 
-	var B58 = Ravencoin.Base58;
+	var B58 = Mynt.Base58;
 })(
-	'undefined' != typeof Ravencoin ? Ravencoin : module.exports
+	'undefined' != typeof Mynt ? Mynt : module.exports
 );

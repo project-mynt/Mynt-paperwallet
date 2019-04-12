@@ -345,12 +345,12 @@
 		return R;
 	};
 
-	// patched by bitaddress.org and Casascius for use with Ravencoin.ECKey
+	// patched by bitaddress.org and Casascius for use with Mynt.ECKey
 	// patched by coretechs to support compressed public keys
 	ec.PointFp.prototype.getEncoded = function (compressed) {
 		var x = this.getX().toBigInteger();
 		var y = this.getY().toBigInteger();
-		var len = 32; // integerToBytes will zero pad if integer is less than 32 bytes. 32 bytes length is required by the Ravencoin protocol.
+		var len = 32; // integerToBytes will zero pad if integer is less than 32 bytes. 32 bytes length is required by the Mynt protocol.
 		var enc = ec.integerToBytes(x, len);
 
 		// when compressed prepend byte depending if y point is even or odd
@@ -643,9 +643,9 @@
 	ec.X9Parameters.prototype.getN = function () { return this.n; };
 	ec.X9Parameters.prototype.getH = function () { return this.h; };
 
-	// secp256k1 is the Curve used by Ravencoin
+	// secp256k1 is the Curve used by Mynt
 	ec.secNamedCurves = {
-		// used by Ravencoin
+		// used by Mynt
 		"secp256k1": function () {
 			// p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1
 			var p = ec.fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F");
@@ -661,7 +661,7 @@
 		}
 	};
 
-	// secp256k1 called by Ravencoin's ECKEY
+	// secp256k1 called by Mynt's ECKEY
 	ec.getSECCurveByName = function (name) {
 		if (ec.secNamedCurves[name] == undefined) return null;
 		return ec.secNamedCurves[name]();

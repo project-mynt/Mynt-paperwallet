@@ -32,7 +32,7 @@ body { font-family: Arial; background-image: url('images/diamonds.png'); height:
 .faqListBullet { padding: 0 5px 0px 15px; }
 .faqLink { cursor: pointer; }
 
-#rvnaddress, #rvnprivwif, #detailaddress, #detailaddresscomp, #detailprivwif, #detailprivwifcomp { font-family: monospace; font-size: 1.25em; }
+#myntaddress, #myntprivwif, #detailaddress, #detailaddresscomp, #detailprivwif, #detailprivwifcomp { font-family: monospace; font-size: 1.25em; }
 #seedpoolarea { display: none; }
 #seedpooldisplay {  font-family: monospace; font-size: 1em; width: 640px; padding: 15px 5px; word-wrap: break-word; min-height: 98px; }
 .seedpoint { width: 40px; height: 40px; display: block; border-radius: 3px; background: url("https://i.imgur.com/h1LwH5e.png?1"); position: absolute; z-index: 10; }
@@ -55,7 +55,7 @@ body { font-family: Arial; background-image: url('images/diamonds.png'); height:
 #generate span { padding: 5px 5px 0 5px; }
 #generatekeyinput { position: relative; z-index: 20; }
 
-#generatelabelravencoinaddress, #generatelabelmovemouse, #generatelabelkeypress { font-size: 14px; font-family: monospace; }
+#generatelabelmyntaddress, #generatelabelmovemouse, #generatelabelkeypress { font-size: 14px; font-family: monospace; }
 #mousemovelimit { font-size: 16px; font-family: monospace; }
 .frontPageText { position: relative; }
 
@@ -150,7 +150,7 @@ h1 { margin: 0px; height: 91px; }
 #coinLogoImg { width: 100%; height: 100%; }
 
 .coinIcoin { width: 64px; height: 64px; padding: 10px; position: absolute; top: 272px; left: 48px; }
-#coinImg { width: 100%; height: 100%; }
+#coinImg { height: 100%; }
 
 #main { position: relative; text-align: center; margin: 0px auto; width: 1005px; }
 #logo { width: 578px; height: 80px; }
@@ -171,7 +171,7 @@ h1 { margin: 0px; height: 91px; }
                                      }
 .supportWalletGenerator { margin: 30px; }
 .errorMsg { color: red; text-align: center !important; width: 100% !important; padding-top: 15px !important; }
-#paperarea .artwallet .rvnaddress
+#paperarea .artwallet .myntaddress
 {
   position: absolute; bottom: 88px; left: 874px; z-index: 100; font-size: 11px; background-color: transparent;
   font-weight: 100; color: #000000; margin: 0; width: 124px; height: 32px; text-align: center;
@@ -180,7 +180,7 @@ h1 { margin: 0px; height: 91px; }
   -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
   transform: rotate(-90deg); font-family: Courier, monospace;
 }
-#paperarea .artwallet .rvnprivwif
+#paperarea .artwallet .myntprivwif
 {
   position: absolute; top: 86px; right: 540px; z-index: 100; font-size: 11px; background-color: transparent;
   font-weight: 100; color: #000000; margin: 0; width: 124px; height: 32px; text-align: center;
@@ -190,7 +190,7 @@ h1 { margin: 0px; height: 91px; }
   transform: rotate(90deg);
     font-family: Courier, monospace;
 }
-#paperarea .artwallet .rvnencryptedkey
+#paperarea .artwallet .myntencryptedkey
 {
   position: absolute; top: 86px; right: 540px; z-index: 100; font-size: 11px; background-color: transparent;
   font-weight:100; color: #000000; margin: 0; width: 110px; height: 32px; text-align: center;
@@ -305,9 +305,9 @@ h1 { margin: 0px; height: 91px; }
 
   .footer { font-size: 90%; clear: both; width: 750px; padding: 10px 0 10px 0; margin: 50px auto auto auto; }
   .footer div span.item { margin: 10px; }
-  .footer .authorrvn { float: left; width: 470px; }
-  .footer .authorrvn span.item { text-align: left; display: block; padding: 0 20px; }
-  .footer .authorrvn div { position: relative; z-index: 100; }
+  .footer .authormynt { float: left; width: 470px; }
+  .footer .authormynt span.item { text-align: left; display: block; padding: 0 20px; }
+  .footer .authormynt div { position: relative; z-index: 100; }
   .footer .authorpgp { position: relative; }
   .footer .authorpgp span.item { text-align: right; display: block; padding: 0 20px; }
   .footer .copyright { font-size: 80%; clear: both; padding: 5px 0; }
@@ -333,7 +333,7 @@ h1 { margin: 0px; height: 91px; }
   .faq { display: none; }
   .banner { display: none; }
   #currency { display: none; }
-  #paperarea .artwallet .rvnaddress, #paperarea .artwallet .rvnprivwif { z-index: 999; }
+  #paperarea .artwallet .myntaddress, #paperarea .artwallet .myntprivwif { z-index: 999; }
   .paperWalletText { z-index: 999;}
     .dogeTag { display: none; }
 }

@@ -1,6 +1,6 @@
 //https://raw.github.com/bitcoinjs/bitcoinjs-lib/09e8c6e184d6501a0c2c59d73ca64db5c0d3eb95/src/util.js
-// Ravencoin utility functions
-Ravencoin.Util = {
+// Mynt utility functions
+Mynt.Util = {
 	/**
 	* Cross-browser compatibility version of Array.isArray.
 	*/
@@ -21,7 +21,7 @@ Ravencoin.Util = {
 	/**
 	* Turn an integer into a "var_int".
 	*
-	* "var_int" is a variable length integer used by Ravencoin's binary format.
+	* "var_int" is a variable length integer used by Mynt's binary format.
 	*
 	* Returns a byte array.
 	*/
@@ -41,7 +41,7 @@ Ravencoin.Util = {
 		}
 	},
 	/**
-	* Parse a Ravencoin value byte array, returning a BigInteger.
+	* Parse a Mynt value byte array, returning a BigInteger.
 	*/
 	valueToBigInt: function (valueBuffer) {
 		if (valueBuffer instanceof BigInteger) return valueBuffer;
@@ -50,9 +50,9 @@ Ravencoin.Util = {
 		return BigInteger.fromByteArrayUnsigned(valueBuffer);
 	},
 	/**
-	* Format a Ravencoin value as a string.
+	* Format a Mynt value as a string.
 	*
-	* Takes a BigInteger or byte-array and returns that amount of Ravencoins in a
+	* Takes a BigInteger or byte-array and returns that amount of Mynts in a
 	* nice standard formatting.
 	*
 	* Examples:
@@ -71,7 +71,7 @@ Ravencoin.Util = {
 		return integerPart + "." + decimalPart;
 	},
 	/**
-	* Parse a floating point string as a Ravencoin value.
+	* Parse a floating point string as a Mynt value.
 	*
 	* Keep in mind that parsing user input is messy. You should always display
 	* the parsed value back to the user to make sure we understood his input

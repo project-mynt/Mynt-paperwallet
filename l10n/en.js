@@ -1,5 +1,5 @@
 ﻿"en": {
-    "defaultTitle" : "Ravencoin-paperwallet - Universal Paper wallet generator for Ravencoin and other cryptocurrencies",
+    "defaultTitle" : "Mynt-paperwallet - Universal Paper wallet generator for Mynt and other cryptocurrencies",
     "title" : "Paper Wallet Generator",
     "bulkgeneratingaddresses": "Generating addresses... ",
     "brainalertpassphrasetooshort": "The passphrase you entered is too short.\n\n",

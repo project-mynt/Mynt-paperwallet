@@ -92,36 +92,36 @@ ninja.wallets.detailwallet = {
 			// show Private Key BIP38 Format
 			document.getElementById("detailprivbip38").innerHTML = key;
 			document.getElementById("detailbip38").style.display = "block";
-			ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(key, passphrase, function (rvnKeyOrError) {
+			ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(key, passphrase, function (myntKeyOrError) {
 				document.getElementById("busyblock").className = "";
-				if (rvnKeyOrError.message) {
-					alert(rvnKeyOrError.message);
+				if (myntKeyOrError.message) {
+					alert(myntKeyOrError.message);
 					ninja.wallets.detailwallet.clear();
 				} else {
-					ninja.wallets.detailwallet.populateKeyDetails(new Ravencoin.ECKey(rvnKeyOrError));
+					ninja.wallets.detailwallet.populateKeyDetails(new Mynt.ECKey(myntKeyOrError));
 				}
 			});
 		}
 		else {
-			if (Ravencoin.ECKey.isMiniFormat(key)) {
+			if (Mynt.ECKey.isMiniFormat(key)) {
 				// show Private Key Mini Format
 				document.getElementById("detailprivmini").innerHTML = key;
 				document.getElementById("detailmini").style.display = "block";
 			}
-			else if (Ravencoin.ECKey.isBase6Format(key)) {
+			else if (Mynt.ECKey.isBase6Format(key)) {
 				// show Private Key Base6 Format
 				document.getElementById("detailprivb6").innerHTML = key;
 				document.getElementById("detailb6").style.display = "block";
 			}
-			var rvnKey = new Ravencoin.ECKey(key);
-			if (rvnKey.priv == null) {
+			var myntKey = new Mynt.ECKey(key);
+			if (myntKey.priv == null) {
 				// enforce a minimum passphrase length
 				if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
 					// Deterministic Wallet confirm box to ask if user wants to SHA256 the input to get a private key
 					var usePassphrase = confirm(ninja.translator.get("detailconfirmsha256"));
 					if (usePassphrase) {
 						var bytes = Crypto.SHA256(key, { asBytes: true });
-						var rvnKey = new Ravencoin.ECKey(bytes);
+						var myntKey = new Mynt.ECKey(bytes);
 					}
 					else {
 						ninja.wallets.detailwallet.clear();
@@ -132,30 +132,30 @@ ninja.wallets.detailwallet = {
 					ninja.wallets.detailwallet.clear();
 				}
 			}
-			ninja.wallets.detailwallet.populateKeyDetails(rvnKey);
+			ninja.wallets.detailwallet.populateKeyDetails(myntKey);
 		}
 	},
 
-	populateKeyDetails: function (rvnKey) {
-		if (rvnKey.priv != null) {
-			rvnKey.setCompressed(false);
-			document.getElementById("detailprivhex").innerHTML = rvnKey.toString().toUpperCase();
-			document.getElementById("detailprivb64").innerHTML = rvnKey.toString("base64");
-			var ravencoinAddress = rvnKey.getRavencoinAddress();
-			var wif = rvnKey.getRavencoinWalletImportFormat();
-			document.getElementById("detailpubkey").innerHTML = rvnKey.getPubKeyHex();
-			document.getElementById("detailaddress").innerHTML = ravencoinAddress;
+	populateKeyDetails: function (myntKey) {
+		if (myntKey.priv != null) {
+			myntKey.setCompressed(false);
+			document.getElementById("detailprivhex").innerHTML = myntKey.toString().toUpperCase();
+			document.getElementById("detailprivb64").innerHTML = myntKey.toString("base64");
+			var myntAddress = myntKey.getMyntAddress();
+			var wif = myntKey.getMyntWalletImportFormat();
+			document.getElementById("detailpubkey").innerHTML = myntKey.getPubKeyHex();
+			document.getElementById("detailaddress").innerHTML = myntAddress;
 			document.getElementById("detailprivwif").innerHTML = wif;
-			rvnKey.setCompressed(true);
-			var ravencoinAddressComp = rvnKey.getRavencoinAddress();
-			var wifComp = rvnKey.getRavencoinWalletImportFormat();
-			document.getElementById("detailpubkeycomp").innerHTML = rvnKey.getPubKeyHex();
-			document.getElementById("detailaddresscomp").innerHTML = ravencoinAddressComp;
+			myntKey.setCompressed(true);
+			var myntAddressComp = myntKey.getMyntAddress();
+			var wifComp = myntKey.getMyntWalletImportFormat();
+			document.getElementById("detailpubkeycomp").innerHTML = myntKey.getPubKeyHex();
+			document.getElementById("detailaddresscomp").innerHTML = myntAddressComp;
 			document.getElementById("detailprivwifcomp").innerHTML = wifComp;
 
 			ninja.qrCode.showQrCode({
-				"detailqrcodepublic": ravencoinAddress,
-				"detailqrcodepubliccomp": ravencoinAddressComp,
+				"detailqrcodepublic": myntAddress,
+				"detailqrcodepubliccomp": myntAddressComp,
 				"detailqrcodeprivate": wif,
 				"detailqrcodeprivatecomp": wifComp
 			}, 4);

@@ -77,7 +77,7 @@ ninja.wallets.paperwallet = {
 		}
 	},
 
-	// generate ravencoin address, private key, QR Code and update information in the HTML
+	// generate mynt address, private key, QR Code and update information in the HTML
 	// idPostFix: 1, 2, 3, etc.
 	generateNewWallet: function (idPostFix) {
 		if (ninja.wallets.paperwallet.encrypt) {
@@ -86,11 +86,11 @@ ninja.wallets.paperwallet = {
 			});
 		}
 		else {
-			var key = new Ravencoin.ECKey(false);
-			var ravencoinAddress = key.getRavencoinAddress();
-			var privateKeyWif = key.getRavencoinWalletImportFormat();
+			var key = new Mynt.ECKey(false);
+			var myntAddress = key.getMyntAddress();
+			var privateKeyWif = key.getMyntWalletImportFormat();
 
-			ninja.wallets.paperwallet.showArtisticWallet(idPostFix, ravencoinAddress, privateKeyWif);
+			ninja.wallets.paperwallet.showArtisticWallet(idPostFix, myntAddress, privateKeyWif);
 		}
 	},
 
@@ -103,7 +103,7 @@ ninja.wallets.paperwallet = {
 		if (!ninja.privateKey.isPrivateKey(suppliedKey)) {
 			alert(ninja.translator.get("detailalertnotvalidprivatekey"));
 		} else {
-			var computedPublicAddress = new Ravencoin.ECKey(suppliedKey).getRavencoinAddress();
+			var computedPublicAddress = new Mynt.ECKey(suppliedKey).getMyntAddress();
 			if (ninja.wallets.paperwallet.encrypt) {
 				document.getElementById("busyblock").className = "busy";
 				ninja.privateKey.BIP38PrivateKeyToEncryptedKeyAsync(suppliedKey,
@@ -119,7 +119,7 @@ ninja.wallets.paperwallet = {
 	},
 
 	templateArtisticHtml: function (i) {
-		var keyelement = 'rvnprivwif';
+		var keyelement = 'myntprivwif';
 		var coinImgUrl = "logos/" + janin.selectedCurrency.name.toLowerCase() + ".png";
 		var walletBackgroundUrl = "wallets/" + janin.selectedCurrency.name.toLowerCase() + ".png";
 
@@ -128,24 +128,24 @@ ninja.wallets.paperwallet = {
 								"<img id='papersvg" + i + "' class='papersvg' src='" + walletBackgroundUrl + "' />" +
 								"<div id='qrcode_public" + i + "' class='qrcode_public'></div>" +
 								"<div id='qrcode_private" + i + "' class='qrcode_private'></div>" +
-								"<div class='rvnaddress' id='rvnaddress" + i + "'></div>" +
+								"<div class='myntaddress' id='myntaddress" + i + "'></div>" +
 								"<div class='" + keyelement + "' id='" + keyelement + i + "'></div>" +
 								"<div class='paperWalletText'><img class='backLogo' src='" + coinImgUrl + "' alt='currency_logo' />" + ninja.translator.get("paperwalletback") + "</div>" +
 							"</div>";
 		return walletHtml;
 	},
 
-	showArtisticWallet: function (idPostFix, ravencoinAddress, privateKey) {
+	showArtisticWallet: function (idPostFix, myntAddress, privateKey) {
 		var keyValuePair = {};
-		keyValuePair["qrcode_public" + idPostFix] = ravencoinAddress;
+		keyValuePair["qrcode_public" + idPostFix] = myntAddress;
 		ninja.qrCode.showQrCode(keyValuePair, 3.5);
 
         var keyValuePair = {};
         keyValuePair["qrcode_private" + idPostFix] = privateKey;
         ninja.qrCode.showQrCode(keyValuePair, 2.8);
 
-        document.getElementById("rvnaddress" + idPostFix).innerHTML = ravencoinAddress;
-		document.getElementById("rvnprivwif" + idPostFix).innerHTML = privateKey;
+        document.getElementById("myntaddress" + idPostFix).innerHTML = myntAddress;
+		document.getElementById("myntprivwif" + idPostFix).innerHTML = privateKey;
 	},
 
 	toggleEncrypt: function (element) {

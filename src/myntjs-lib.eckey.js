@@ -1,6 +1,6 @@
 //https://raw.github.com/pointbiz/bitcoinjs-lib/9b2f94a028a7bc9bed94e0722563e9ff1d8e8db8/src/eckey.js
-Ravencoin.ECKey = (function () {
-	var ECDSA = Ravencoin.ECDSA;
+Mynt.ECKey = (function () {
+	var ECDSA = Mynt.ECDSA;
 	var ecparams = EllipticCurve.getSECCurveByName("secp256k1");
 	var rng = new SecureRandom();
 
@@ -12,7 +12,7 @@ Ravencoin.ECKey = (function () {
 		} else if (input instanceof BigInteger) {
 			// Input is a private key value
 			this.priv = input;
-		} else if (Ravencoin.Util.isArray(input)) {
+		} else if (Mynt.Util.isArray(input)) {
 			// Prepend zero byte to prevent interpretation as negative integer
 			this.priv = BigInteger.fromByteArrayUnsigned(input);
 		} else if ("string" == typeof input) {
@@ -100,16 +100,16 @@ Ravencoin.ECKey = (function () {
 	ECKey.prototype.getPubKeyHash = function () {
 		if (this.compressed) {
 			if (this.pubKeyHashComp) return this.pubKeyHashComp;
-			return this.pubKeyHashComp = Ravencoin.Util.sha256ripe160(this.getPub());
+			return this.pubKeyHashComp = Mynt.Util.sha256ripe160(this.getPub());
 		} else {
 			if (this.pubKeyHashUncomp) return this.pubKeyHashUncomp;
-			return this.pubKeyHashUncomp = Ravencoin.Util.sha256ripe160(this.getPub());
+			return this.pubKeyHashUncomp = Mynt.Util.sha256ripe160(this.getPub());
 		}
 	};
 
-	ECKey.prototype.getRavencoinAddress = function () {
+	ECKey.prototype.getMyntAddress = function () {
 		var hash = this.getPubKeyHash();
-		var addr = new Ravencoin.Address(hash);
+		var addr = new Mynt.Address(hash);
 		return addr.toString();
 	};
 
@@ -118,7 +118,7 @@ Ravencoin.ECKey = (function () {
 	*/
 	ECKey.prototype.setPub = function (pub) {
 		// byte array
-		if (Ravencoin.Util.isArray(pub)) {
+		if (Mynt.Util.isArray(pub)) {
 			pub = Crypto.util.bytesToHex(pub).toString().toUpperCase();
 		}
 		var ecPoint = ecparams.getCurve().decodePointHex(pub);
@@ -128,27 +128,27 @@ Ravencoin.ECKey = (function () {
 	};
 
 	// Sipa Private Key Wallet Import Format
-	ECKey.prototype.getRavencoinWalletImportFormat = function () {
-		var bytes = this.getRavencoinPrivateKeyByteArray();
+	ECKey.prototype.getMyntWalletImportFormat = function () {
+		var bytes = this.getMyntPrivateKeyByteArray();
 		bytes.unshift(janin.currency.privateKeyPrefix()); // prepend private key prefix
 		if (this.compressed) bytes.push(0x01); // append 0x01 byte for compressed format
 		var checksum = Crypto.SHA256(Crypto.SHA256(bytes, { asBytes: true }), { asBytes: true });
 		bytes = bytes.concat(checksum.slice(0, 4));
-		var privWif = Ravencoin.Base58.encode(bytes);
+		var privWif = Mynt.Base58.encode(bytes);
 		return privWif;
 	};
 
 	// Private Key Hex Format
-	ECKey.prototype.getRavencoinHexFormat = function () {
-		return Crypto.util.bytesToHex(this.getRavencoinPrivateKeyByteArray()).toString().toUpperCase();
+	ECKey.prototype.getMyntHexFormat = function () {
+		return Crypto.util.bytesToHex(this.getMyntPrivateKeyByteArray()).toString().toUpperCase();
 	};
 
 	// Private Key Base64 Format
-	ECKey.prototype.getRavencoinBase64Format = function () {
-		return Crypto.util.bytesToBase64(this.getRavencoinPrivateKeyByteArray());
+	ECKey.prototype.getMyntBase64Format = function () {
+		return Crypto.util.bytesToBase64(this.getMyntPrivateKeyByteArray());
 	};
 
-	ECKey.prototype.getRavencoinPrivateKeyByteArray = function () {
+	ECKey.prototype.getMyntPrivateKeyByteArray = function () {
 		// Get a copy of private key as a byte array
 		var bytes = this.priv.toByteArrayUnsigned();
 		// zero pad if private key is less than 32 bytes
@@ -159,14 +159,14 @@ Ravencoin.ECKey = (function () {
 	ECKey.prototype.toString = function (format) {
 		format = format || "";
 		if (format.toString().toLowerCase() == "base64" || format.toString().toLowerCase() == "b64") {
-			return this.getRavencoinBase64Format();
+			return this.getMyntBase64Format();
 		}
 		// Wallet Import Format
 		else if (format.toString().toLowerCase() == "wif") {
-			return this.getRavencoinWalletImportFormat();
+			return this.getMyntWalletImportFormat();
 		}
 		else {
-			return this.getRavencoinHexFormat();
+			return this.getMyntHexFormat();
 		}
 	};
 
@@ -182,7 +182,7 @@ Ravencoin.ECKey = (function () {
 	* Parse a wallet import format private key contained in a string.
 	*/
 	ECKey.decodeWalletImportFormat = function (privStr) {
-		var bytes = Ravencoin.Base58.decode(privStr);
+		var bytes = Mynt.Base58.decode(privStr);
 		var hash = bytes.slice(0, 33);
 		var checksum = Crypto.SHA256(Crypto.SHA256(hash, { asBytes: true }), { asBytes: true });
 		if (checksum[0] != bytes[33] ||
@@ -203,7 +203,7 @@ Ravencoin.ECKey = (function () {
 	* Parse a compressed wallet import format private key contained in a string.
 	*/
 	ECKey.decodeCompressedWalletImportFormat = function (privStr) {
-		var bytes = Ravencoin.Base58.decode(privStr);
+		var bytes = Mynt.Base58.decode(privStr);
 		var hash = bytes.slice(0, 34);
 		var checksum = Crypto.SHA256(Crypto.SHA256(hash, { asBytes: true }), { asBytes: true });
 		if (checksum[0] != bytes[34] ||

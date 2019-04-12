@@ -1,6 +1,6 @@
 ninja.wallets.singlewallet = {
 	open: function () {
-		if (document.getElementById("rvnaddress").innerHTML == "") {
+		if (document.getElementById("myntaddress").innerHTML == "") {
 			ninja.wallets.singlewallet.generateNewAddressAndKey();
 		}
 		document.getElementById("walletCommands").style.display = "block";
@@ -14,25 +14,25 @@ ninja.wallets.singlewallet = {
 		document.getElementById("singlearea").style.display = "none";
 	},
 
-	// generate ravencoin address and private key and update information in the HTML
+	// generate mynt address and private key and update information in the HTML
 	generateNewAddressAndKey: function () {
 		try {
-			var key = new Ravencoin.ECKey(false);
-			var ravencoinAddress = key.getRavencoinAddress();
-			var privateKeyWif = key.getRavencoinWalletImportFormat();
-			document.getElementById("rvnaddress").innerHTML = ravencoinAddress;
-			document.getElementById("rvnprivwif").innerHTML = privateKeyWif;
+			var key = new Mynt.ECKey(false);
+			var myntAddress = key.getMyntAddress();
+			var privateKeyWif = key.getMyntWalletImportFormat();
+			document.getElementById("myntaddress").innerHTML = myntAddress;
+			document.getElementById("myntprivwif").innerHTML = privateKeyWif;
 			var keyValuePair = {
-				"qrcode_public": ravencoinAddress,
+				"qrcode_public": myntAddress,
 				"qrcode_private": privateKeyWif
 			};
 			ninja.qrCode.showQrCode(keyValuePair, 4);
 		}
 		catch (e) {
-			// browser does not have sufficient JavaScript support to generate a ravencoin address
+			// browser does not have sufficient JavaScript support to generate a mynt address
 			alert(e);
-			document.getElementById("rvnaddress").innerHTML = "error";
-			document.getElementById("rvnprivwif").innerHTML = "error";
+			document.getElementById("myntaddress").innerHTML = "error";
+			document.getElementById("myntprivwif").innerHTML = "error";
 			document.getElementById("qrcode_public").innerHTML = "";
 			document.getElementById("qrcode_private").innerHTML = "";
 		}
